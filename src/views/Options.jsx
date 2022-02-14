@@ -12,7 +12,7 @@ import { Query, Mutation, compose, withApollo } from 'react-apollo'
 import { options, deleteOption } from '../apollo/server'
 import gql from 'graphql-tag'
 import Loader from 'react-loader-spinner'
-import Alert from '../components/Alert';
+import Alert from '../components/Alert'
 
 const GET_OPTIONS = gql`
   ${options}
@@ -24,7 +24,7 @@ const DELETE_OPTION = gql`
 const Option = props => {
   const [editModal, setEditModal] = useState(false)
   const [option, setOption] = useState(null)
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleModal = option => {
     setEditModal(!editModal)
@@ -104,9 +104,9 @@ const Option = props => {
                   e.preventDefault()
                   // deleteOption({ variables: { id: row._id } })
                   setIsOpen(true)
-                    setTimeout(() => {
-                      setIsOpen(false);
-                    }, 2000);
+                  setTimeout(() => {
+                    setIsOpen(false)
+                  }, 2000)
                 }}>
                 {'Delete'}
               </Badge>
@@ -141,7 +141,12 @@ const Option = props => {
         <Row className="mt-5">
           <div className="col">
             <Card className="shadow">
-              {isOpen && <Alert message="Delete feature will available after purchasing product" severity="warning" />}
+              {isOpen && (
+                <Alert
+                  message="Delete feature will available after purchasing product"
+                  severity="warning"
+                />
+              )}
               <Query query={GET_OPTIONS} variables={{ page: 0 }}>
                 {({ loading, error, data }) => {
                   if (error) {

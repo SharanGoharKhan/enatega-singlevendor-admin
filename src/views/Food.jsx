@@ -14,7 +14,7 @@ import DataTable from 'react-data-table-component'
 import orderBy from 'lodash/orderBy'
 import { transformToNewline } from '../utils/stringManipulations'
 import Loader from 'react-loader-spinner'
-import Alert from '../components/Alert';
+import Alert from '../components/Alert'
 
 const GET_FOODS = gql`
   ${getFoods}
@@ -26,7 +26,7 @@ const DELETE_FOOD = gql`
 const Food = props => {
   const [editModal, setEditModal] = useState(false)
   const [food, setFood] = useState(null)
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleModal = food => {
     setEditModal(!editModal)
@@ -132,9 +132,9 @@ const Food = props => {
                   e.preventDefault()
                   // deleteFood({ variables: { id: row._id } })
                   setIsOpen(true)
-                    setTimeout(() => {
-                      setIsOpen(false);
-                    }, 2000);
+                  setTimeout(() => {
+                    setIsOpen(false)
+                  }, 2000)
                 }}>
                 {'Delete'}
               </Badge>
@@ -156,7 +156,12 @@ const Food = props => {
         <Row className="mt-5">
           <div className="col">
             <Card className="shadow">
-            {isOpen && <Alert message="Delete feature will available after purchasing product" severity="warning" />}
+              {isOpen && (
+                <Alert
+                  message="Delete feature will available after purchasing product"
+                  severity="warning"
+                />
+              )}
               <Query query={GET_FOODS} variables={{ page: 0 }}>
                 {({ loading, error, data }) => {
                   if (error) {

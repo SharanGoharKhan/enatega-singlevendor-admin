@@ -800,20 +800,22 @@ function Order(props) {
                                     {order.payment_method}
                                   </Badge>
                                 </ListGroupItem>
-                                {order.order_status !== 'DELIVERED' && <ListGroupItem className="justify-content-between">
-                                  Paid Amount
-                                  <Badge
-                                    style={{
-                                      fontSize: '12px',
-                                      float: 'right',
-                                      color: 'black'
-                                    }}>
-                                    {data.configuration.currency_symbol}{' '}
-                                    {order.paid_amount
-                                      ? order.paid_amount.toFixed(2)
-                                      : 0}
-                                  </Badge>
-                                </ListGroupItem>}
+                                {order.order_status !== 'DELIVERED' && (
+                                  <ListGroupItem className="justify-content-between">
+                                    Paid Amount
+                                    <Badge
+                                      style={{
+                                        fontSize: '12px',
+                                        float: 'right',
+                                        color: 'black'
+                                      }}>
+                                      {data.configuration.currency_symbol}{' '}
+                                      {order.paid_amount
+                                        ? order.paid_amount.toFixed(2)
+                                        : 0}
+                                    </Badge>
+                                  </ListGroupItem>
+                                )}
                               </ListGroup>
                             </FormGroup>
                           </Col>

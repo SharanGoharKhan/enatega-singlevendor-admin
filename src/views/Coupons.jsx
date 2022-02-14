@@ -14,7 +14,7 @@ import DataTable from 'react-data-table-component'
 import orderBy from 'lodash/orderBy'
 import { getCoupons, deleteCoupon, editCoupon } from '../apollo/server'
 import Loader from 'react-loader-spinner'
-import Alert from '../components/Alert';
+import Alert from '../components/Alert'
 
 const GET_COUPONS = gql`
   ${getCoupons}
@@ -29,7 +29,7 @@ const DELETE_COUPON = gql`
 const Coupon = props => {
   const [editModal, setEditModal] = useState(false)
   const [coupon, setCoupon] = useState(null)
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleModal = coupon => {
     setEditModal(!editModal)
@@ -136,9 +136,9 @@ const Coupon = props => {
                   e.preventDefault()
                   // deleteCoupon({ variables: { id: row._id } })
                   setIsOpen(true)
-                    setTimeout(() => {
-                      setIsOpen(false);
-                    }, 2000);
+                  setTimeout(() => {
+                    setIsOpen(false)
+                  }, 2000)
                 }}>
                 {'Delete'}
               </Badge>
@@ -160,7 +160,12 @@ const Coupon = props => {
         <Row className="mt-5">
           <div className="col">
             <Card className="shadow">
-            {isOpen && <Alert message="Delete feature will available after purchasing product" severity="warning" />}
+              {isOpen && (
+                <Alert
+                  message="Delete feature will available after purchasing product"
+                  severity="warning"
+                />
+              )}
               <Query query={GET_COUPONS}>
                 {({ loading, error, data }) => {
                   if (error) {

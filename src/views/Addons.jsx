@@ -11,8 +11,7 @@ import { withTranslation } from 'react-i18next'
 import gql from 'graphql-tag'
 import { Query, Mutation, compose, withApollo } from 'react-apollo'
 import Loader from 'react-loader-spinner'
-import Alert from '../components/Alert';
-
+import Alert from '../components/Alert'
 
 const GET_ADDONS = gql`
   ${addons}
@@ -24,7 +23,7 @@ const DELETE_ADDON = gql`
 const Addon = props => {
   const [addon, setAddon] = useState(null)
   const [editModal, setEditModal] = useState(false)
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleModal = addon => {
     setEditModal(!editModal)
@@ -73,8 +72,6 @@ const Addon = props => {
     }
   ]
 
-
-
   const actionButtons = row => {
     return (
       <>
@@ -111,10 +108,9 @@ const Addon = props => {
                     // deleteAddon({ variables: { id: row._id } })
                     setIsOpen(true)
                     setTimeout(() => {
-                      setIsOpen(false);
-                    }, 2000);
-                  }}
-                >
+                      setIsOpen(false)
+                    }, 2000)
+                  }}>
                   {'Delete'}
                 </Badge>
               </>
@@ -147,7 +143,12 @@ const Addon = props => {
         <Row className="mt-5">
           <div className="col">
             <Card className="shadow">
-              {isOpen && <Alert message="Delete feature will available after purchasing product" severity="warning" />}
+              {isOpen && (
+                <Alert
+                  message="Delete feature will available after purchasing product"
+                  severity="warning"
+                />
+              )}
               <Query query={GET_ADDONS} variables={{ page: 0 }}>
                 {({ loading, error, data }) => {
                   if (error) {

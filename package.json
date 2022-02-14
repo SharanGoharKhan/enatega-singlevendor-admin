@@ -18,7 +18,6 @@
     "start:staging": "env-cmd -f .env.staging react-scripts start",
     "start:dev": "PORT=3006 env-cmd -f .env.development react-scripts start",
     "start:prod": "env-cmd -f .env.production react-scripts start",
-    "build:dev": "env-cmd -f .env.dev react-scripts build",
     "build:prod": "env-cmd -f .env.production react-scripts build",
     "build:staging": "env-cmd -f .env.staging react-scripts build"
   },
