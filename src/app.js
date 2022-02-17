@@ -2,10 +2,10 @@ import React from 'react'
 import AdminLayout from 'layouts/Admin.jsx'
 import AuthLayout from 'layouts/Auth.jsx'
 import { PrivateRoute } from './views/PrivateRoute'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect, HashRouter } from 'react-router-dom'
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <PrivateRoute
           path="/admin"
@@ -14,7 +14,7 @@ function App() {
         <Route path="/auth" component={props => <AuthLayout {...props} />} />
         <Redirect from="/" to="/admin/dashboard" />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 export default App
